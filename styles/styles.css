@@ -1,0 +1,22 @@
+.font {
+    font-family: 'Mukta';
+    font-weight: 200;
+}
+
+.fontH1 {
+    font-family: 'Mukta';
+    font-weight: 800;
+}
+
+.fontH3 {
+    font-family: 'Mukta';
+    font-weight: 600;
+}
+
+table, th, td {
+    border: 1px solid;
+  }
+
+table {
+    width: 100%;
+}
