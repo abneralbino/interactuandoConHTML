@@ -19,6 +19,7 @@ reqForm.addEventListener('submit', (e) => {
         id: idDeLaPosicion,
         fecha: fechaLimite,
         vacantesReq: vacantes,
+
     };
 
     crearReq(req);
@@ -37,34 +38,77 @@ const crearReq = (req) => {
         <td> ${req.fecha} </td>
         <td>80</td>
         <td> ${req.vacantesReq} </td>
+        <button class="visualizar"> Ver detalles </button>
+        <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
+        
     </tr>    
     `;
     reqsAbiertas.appendChild(tr);
 
+guardarReqStorage(posiciones);
+
+reqsAbiertas.addEventListener('click', (e) => {
+    removerReq(e.target.value);
+    });
+};
+
+const removerReq = (titulo) => {
+    posiciones.forEach((req, index) => {
+        if (req.tituloDeLaPosicion === titulo) {
+            posiciones.splice(index, 1);
+        }
+        
+    });
+    mostrarReqs (posiciones);
+    guardarReqStorage (posiciones);
+    
+};
+
+const mostrarReqs = (posiciones) => {
+    const reqsAbiertas = document.getElementById('posicionesAbiertas');
+    const tr = document.createElement('tr');
+    
+    reqsAbiertas.innerHTML = ''; //no usé .innerHTML porque está borrando el header de la tabla
+
+    posiciones.forEach(posiciones => {
+
+        tr.innerHTML += `
+            <tr>
+                <td> ${req.titulo} </td>
+                <td> ${req.id} </td>
+                <td> ${req.fecha} </td>
+                <td>80</td>
+                <td> ${req.vacantesReq} </td>
+                <button class="visualizar"> Ver detalles </button>
+                <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
+                
+            </tr>    
+            `;
+            reqsAbiertas.appendChild(tr);
+    });  
+
+    reqsAbiertas.addEventListener('click', (e) => {
+        removerReq(e.target.value);
+    });
+
 };
 
 
-  //usamos .push para poder crear los objetos adentro del array
-/* posiciones.push({
-    tituloDeLaPosicion: document.getElementById('tituloDeLaPosicion').value,
-    numeroId: document.getElementById('numeroId').value,
-    vacantes: document.getElementById('vacantes').value,
-    fechaLimite: new Date(document.getElementById('fechaLimite')).value,
-    })
+const guardarReqStorage = (posiciones) => {
+    localStorage.setItem('posiciones', JSON.stringify(posiciones));
+};
 
-posiciones.push({
-    tituloDeLaPosicion: document.getElementById('tituloDeLaPosicion'.value),
-    numeroId: document.getElementById('numeroId').value,
-    vacantes: document.getElementById('vacantes').value,
-    fechaLimite: new Date(document.getElementById('fechaLimite')).value,
-    })
+const getReqStorage = () => {
+    const reqStorage = JSON.parse(localStorage.getItem('posiciones'));
+    return reqStorage;
+};
 
-posiciones.push({
-    tituloDeLaPosicion: document.getElementById('tituloDeLaPosicion').value,
-    numeroId: document.getElementById('numeroId').value,
-    vacantes: document.getElementById('vacantes').value,
-    fechaLimite: new Date(document.getElementById('fechaLimite')).value,
-    }) */
+document.addEventListener ('DOMContentLoaded', () => {
+    if (localStorage.getItem('posiciones')) {
+        posiciones = getReqStorage();
+        mostrarReqs(posiciones);
+    }
+})
 
 //Pregunta: como aplicar este while a cada vez que el prompt pida una nueva posicion?
 /* while (vacantes === 0) {

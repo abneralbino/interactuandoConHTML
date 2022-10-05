@@ -42,6 +42,10 @@ table {
     border: none;
 }
 
+tr {
+    text-align: center;
+}
+
 tr:hover {
     background-color: rgb(193, 215, 240);
 }
@@ -54,3 +58,32 @@ th {
     background-color: #0051ff;
     color: white;
   }
+
+.remover {
+    color: black;
+    background-color: white;
+    border-radius: 4px;
+    transition-duration: 0.4s;
+    border: red 2px solid;
+    padding: 4px 4px;
+}
+
+.remover:hover {
+    background-color: #fc0000; 
+    color: white;
+}
+
+.visualizar {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    border: #01ff0e 2px solid;
+    margin-right: 10px;
+    padding: 4px 4px;
+}
+
+.visualizar:hover {
+    background-color: #01ff0e; 
+    color: white;
+    transition-duration: 0.4s;
+}
