@@ -1,22 +1,56 @@
+
 .font {
     font-family: 'Mukta';
     font-weight: 200;
 }
 
+.logo {
+    background-color: rgb(42, 139, 224);
+    display: flex;
+    /*align-items: center;*/
+    justify-content: space-between;
+}
+
 .fontH1 {
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
     font-family: 'Mukta';
     font-weight: 800;
+    background-color: rgb(42, 139, 224);
+    align-items: flex-end;
 }
 
 .fontH3 {
+    
     font-family: 'Mukta';
     font-weight: 600;
+    background-color: rgb(123, 167, 206);
 }
 
+.titulo {
+    margin-left: 10px;
+
+    
+}
 table, th, td {
-    border: 1px solid;
+    border: none;
   }
 
 table {
     width: 100%;
+    border: none;
 }
+
+tr:hover {
+    background-color: rgb(193, 215, 240);
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+  }
+
+th {
+    background-color: #0051ff;
+    color: white;
+  }

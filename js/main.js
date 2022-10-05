@@ -2,7 +2,7 @@
 
 // Se crea un array de objetos vacío
 const reqForm = document.getElementById('nuevoPuesto');
-
+    
 let posiciones = [];
 
 reqForm.addEventListener('submit', (e) => {
@@ -11,7 +11,7 @@ reqForm.addEventListener('submit', (e) => {
     const form = new FormData(reqForm);
     const tituloDeLaPosicion = form.get('tituloDeLaPosicion');
     const idDeLaPosicion = form.get('numeroId');
-    const fechaLimite = form.get(new Date('fechaLimite'));
+    const fechaLimite = form.get('fechaLimite');
     const vacantes = form.get('vacantes');
 
     const req = {

@@ -10,26 +10,28 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Tracker de Vacantes de Trabajo</title>
 </head>
-<body>
-    <h1 class="fontH1">HireZen</h1>
-    <h2 class="font">Organice, controle, contrate.</h1>
+<body class="body">
+    <div class="logo">
+        <h1 class="fontH1">HireZen</h1>
+        <h2 class="font">Organice, controle, contrate.</h1>
+    </div>
     <h3 class="fontH3">Datos de la Posición</h3>
-    <form id="nuevoPuesto">
+    <form class ="form" id="nuevoPuesto">
         <div>
             <label for="Título" class="font">Título de la Posición</label>
-            <input type="text" Required placeholder="Título" id="tituloDeLaPosicion">
+            <input type="text" Required placeholder="Título" id="tituloDeLaPosicion" name="tituloDeLaPosicion">
         </div>
         <div>
             <label for="ID" class="font">ID de la Posición</label>
-            <input type="number" Required placeholder="ID" id="numeroId">
+            <input type="number" Required placeholder="ID" id="numeroId" name="numeroId">
         </div>
         <div>
             <label for="Límite" class="font">Fecha Límite de Contratación</label>
-            <input type="date" Required placeholder="Fecha límite para que el candidato firme su contrato" id="fechaLimite">
+            <input type="date" Required placeholder="Fecha límite para que el candidato firme su contrato" id="fechaLimite" name="fechaLimite">
         </div>
         <div>
             <label for="Vacantes" class="font">Cantidad de vacantes</label>
-            <input type="number" Required placeholder="Cuántas personas quiere contratar" id="vacantes">
+            <input type="number" Required placeholder="Cuántas personas quiere contratar" id="vacantes" name="vacantes">
         </div>
         <div class="formFields">
             <input type="submit" value="Enviar" id="enviar">
@@ -45,13 +47,7 @@
           <th>Días para Presentar Candidatos</th>
           <th>Cantidad de Candidatos a Presentar</th>
         </tr>
-        <tr>
-            <td>Ingeniero</td>
-            <td>123456-9</td>
-            <td>15/12/2022</td>
-            <td>80</td>
-            <td>9</td>
-        </tr>
+       
     </table>
     <script src="./js/main.js"></script>
 </body>
