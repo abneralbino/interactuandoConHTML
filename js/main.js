@@ -1,8 +1,5 @@
-//alert ("Bienvenido a HireZen: el tracker de vacantes de trabajo. Entre la información del puesto.");
-
-// Se crea un array de objetos vacío
 const reqForm = document.getElementById('nuevoPuesto');
-    
+const fechaDeHoy = new Date();
 let posiciones = [];
 
 reqForm.addEventListener('submit', (e) => {
@@ -13,18 +10,43 @@ reqForm.addEventListener('submit', (e) => {
     const idDeLaPosicion = form.get('numeroId');
     const fechaLimite = form.get('fechaLimite');
     const vacantes = form.get('vacantes');
+    const days = fechaLimite.diff(fechaDeHoy, 'days')
+    //diferenciaFechas (fechaLimite, fechaDeHoy);
 
     const req = {
         titulo: tituloDeLaPosicion,
         id: idDeLaPosicion,
         fecha: fechaLimite,
         vacantesReq: vacantes,
+        cantidadDeDias: diffInDays,
 
     };
 
     crearReq(req);
 });
 
+/* function diferenciaFechas (fecha1, fecha2) {
+    const diffInDays = fecha2.diff(fecha1, 'days');
+    return diffInDays;
+} */
+
+//console.log(diffInDays);
+/* let 
+let msAdias = 0;
+let fechaDeHoy = new Date();
+
+function calcularFechas (fecha1, fecha2) {
+    diferenciaFechas = fecha1 - fecha2;
+    msAdias = 1000 * 3600 * 24;
+    cantidadDeDias = parseInt(diferenciaFechas/msAdias);
+    return cantidadDeDias;
+} */
+
+//const diff = fechaDeHoy.getDate().diff(fechaLimite.getDate(), 'days');
+
+//console.log(diff);
+
+//console.log(diff.toObject())
 
 const crearReq = (req) => {
     const reqsAbiertas = document.getElementById('posicionesAbiertas');
@@ -36,9 +58,9 @@ const crearReq = (req) => {
         <td> ${req.titulo} </td>
         <td> ${req.id} </td>
         <td> ${req.fecha} </td>
-        <td>80</td>
+        <td> ${req.cantidadDeDias} </td>
         <td> ${req.vacantesReq} </td>
-        <button class="visualizar"> Ver detalles </button>
+        <button class="visualizar"> Ver detalles </button> 
         <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
         
     </tr>    
@@ -70,14 +92,13 @@ const mostrarReqs = (posiciones) => {
     
     reqsAbiertas.innerHTML = ''; //no usé .innerHTML porque está borrando el header de la tabla
 
-    posiciones.forEach(posiciones => {
-
+    posiciones.forEach(req => {
         tr.innerHTML += `
             <tr>
                 <td> ${req.titulo} </td>
                 <td> ${req.id} </td>
                 <td> ${req.fecha} </td>
-                <td>80</td>
+                <td> ${req.cantidadDeDias} </td>
                 <td> ${req.vacantesReq} </td>
                 <button class="visualizar"> Ver detalles </button>
                 <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
@@ -108,7 +129,9 @@ document.addEventListener ('DOMContentLoaded', () => {
         posiciones = getReqStorage();
         mostrarReqs(posiciones);
     }
-})
+});
+
+
 
 //Pregunta: como aplicar este while a cada vez que el prompt pida una nueva posicion?
 /* while (vacantes === 0) {

@@ -2,6 +2,7 @@
 .font {
     font-family: 'Mukta';
     font-weight: 200;
+    padding-right: 10px;
 }
 
 .logo {
@@ -30,6 +31,7 @@
 
 .titulo {
     margin-left: 10px;
+    margin-right: 10px;
 
     
 }
