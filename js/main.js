@@ -88,7 +88,7 @@ const mostrarReqs = (posiciones) => {
 
     posiciones.forEach(req => {
         tr.innerHTML += `
-            
+            <tr></tr>
             <tr>
                 <td> ${req.titulo} </td>
                 <td> ${req.id} </td>
@@ -126,32 +126,24 @@ document.addEventListener ('DOMContentLoaded', () => {
     }
 });
 
+const lista = document.querySelector('#listado');
 
+fetch('/sueldos.json')
+.then((response) => response.json())
+.then((data) => {
+    mostrarSueldos(data)
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const mostrarSueldos = (data) => {
+    data.forEach((job) => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+        <h4>${job.title}</h4>
+        <p>${job.body}</p>
+        `
+        lista.appendChild(li);
+    })
+};
 
 
 
