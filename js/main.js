@@ -1,5 +1,17 @@
 const reqForm = document.getElementById('nuevoPuesto');
+//const cantidadDeDias = 0;
+//const diferenciaFechas = 0;
+const msAdias = 0;
 const fechaDeHoy = new Date();
+const fechaDeHoyReal = fechaDeHoy.toLocaleString(fechaDeHoy.DATE_SHORT);
+
+function calcularFechas (fecha1, fecha2) {
+    let diferenciaFechas = fecha1 - fecha2;
+    let msAdias = 1000 * 3600 * 24;
+    let cantidadDeDias = parseInt(diferenciaFechas/msAdias);
+    return cantidadDeDias;
+};
+
 let posiciones = [];
 
 reqForm.addEventListener('submit', (e) => {
@@ -8,45 +20,26 @@ reqForm.addEventListener('submit', (e) => {
     const form = new FormData(reqForm);
     const tituloDeLaPosicion = form.get('tituloDeLaPosicion');
     const idDeLaPosicion = form.get('numeroId');
-    const fechaLimite = form.get('fechaLimite');
+    const fechaLimite = new Date(form.get('fechaLimite'));
+    const fechaLimiteReal = fechaLimite.toLocaleString(fechaLimite.DATE_SHORT);
     const vacantes = form.get('vacantes');
-    const days = fechaLimite.diff(fechaDeHoy, 'days')
-    //diferenciaFechas (fechaLimite, fechaDeHoy);
+    const cantDias = (calcularFechas (fechaLimite, fechaDeHoy));
+    
 
     const req = {
         titulo: tituloDeLaPosicion,
         id: idDeLaPosicion,
-        fecha: fechaLimite,
+        fecha: fechaLimiteReal,
+        rowCantDias: cantDias,
         vacantesReq: vacantes,
-        cantidadDeDias: diffInDays,
 
     };
 
     crearReq(req);
 });
 
-/* function diferenciaFechas (fecha1, fecha2) {
-    const diffInDays = fecha2.diff(fecha1, 'days');
-    return diffInDays;
-} */
+console.log(fechaDeHoy);
 
-//console.log(diffInDays);
-/* let 
-let msAdias = 0;
-let fechaDeHoy = new Date();
-
-function calcularFechas (fecha1, fecha2) {
-    diferenciaFechas = fecha1 - fecha2;
-    msAdias = 1000 * 3600 * 24;
-    cantidadDeDias = parseInt(diferenciaFechas/msAdias);
-    return cantidadDeDias;
-} */
-
-//const diff = fechaDeHoy.getDate().diff(fechaLimite.getDate(), 'days');
-
-//console.log(diff);
-
-//console.log(diff.toObject())
 
 const crearReq = (req) => {
     const reqsAbiertas = document.getElementById('posicionesAbiertas');
@@ -54,11 +47,12 @@ const crearReq = (req) => {
     posiciones.push(req);
 
     tr.innerHTML += `
+   
     <tr>
         <td> ${req.titulo} </td>
         <td> ${req.id} </td>
         <td> ${req.fecha} </td>
-        <td> ${req.cantidadDeDias} </td>
+        <td> ${req.rowCantDias} </td>
         <td> ${req.vacantesReq} </td>
         <button class="visualizar"> Ver detalles </button> 
         <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
@@ -94,11 +88,12 @@ const mostrarReqs = (posiciones) => {
 
     posiciones.forEach(req => {
         tr.innerHTML += `
+            
             <tr>
                 <td> ${req.titulo} </td>
                 <td> ${req.id} </td>
                 <td> ${req.fecha} </td>
-                <td> ${req.cantidadDeDias} </td>
+                <td> ${req.rowCantDias} </td>
                 <td> ${req.vacantesReq} </td>
                 <button class="visualizar"> Ver detalles </button>
                 <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
@@ -131,6 +126,57 @@ document.addEventListener ('DOMContentLoaded', () => {
     }
 });
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* function diferenciaFechas (fecha1, fecha2) {
+    const diffInDays = fecha2.diff(fecha1, 'days');
+    return diffInDays;
+} */
+
+//console.log(diffInDays);
+/* let 
+let msAdias = 0;
+let fechaDeHoy = new Date();
+
+function calcularFechas (fecha1, fecha2) {
+    diferenciaFechas = fecha1 - fecha2;
+    msAdias = 1000 * 3600 * 24;
+    cantidadDeDias = parseInt(diferenciaFechas/msAdias);
+    return cantidadDeDias;
+} */
+
+//const diff = fechaDeHoy.getDate().diff(fechaLimite.getDate(), 'days');
+
+//console.log(diff);
+
+//console.log(diff.toObject())
 
 
 //Pregunta: como aplicar este while a cada vez que el prompt pida una nueva posicion?
