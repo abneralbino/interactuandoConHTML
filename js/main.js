@@ -128,7 +128,7 @@ document.addEventListener ('DOMContentLoaded', () => {
 
 const lista = document.querySelector('#listado');
 
-fetch('/sueldos.json')
+fetch('./sueldos.json')
 .then((response) => response.json())
 .then((data) => {
     mostrarSueldos(data)
@@ -145,6 +145,7 @@ const mostrarSueldos = (data) => {
     })
 };
 
+console.log(mostrarSueldos);
 
 
 /* function diferenciaFechas (fecha1, fecha2) {
