@@ -22,6 +22,10 @@
     align-items: flex-end;
 }
 
+h3 {
+    padding-left: 10px;
+}
+
 .fontH3 {
     
     font-family: 'Mukta';
@@ -88,4 +92,34 @@ th {
     background-color: #01ff0e; 
     color: white;
     transition-duration: 0.4s;
+}
+
+.expect {
+    font:300;
+    font-family: 'Mukta';
+    font-weight: bold;
+}
+
+.expectDetail {
+    font:300;
+    font-family: 'Mukta';
+}
+
+.sueldos {
+    display:flex;
+    justify-content: space-evenly;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    border: 2px rgb(177, 193, 209) solid;
+    list-style-type:none;
+    padding: 10px;
+    margin:auto;
+    align-items: left;
+    width: 12%;
+    height: 12%;
 }

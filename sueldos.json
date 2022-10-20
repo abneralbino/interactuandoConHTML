@@ -2,42 +2,42 @@
     {
         "id": 1,
         "nombre": "Diseñador",
-        "categoria": "creative & Design",
-        "sueldoPromedio": 45000
+        "categoria": "Creative & Design",
+        "sueldoPromedio": 45000.00
     },
 
     {
         "id": 2,
         "nombre": "Gerente de proyectos",
         "categoria": "Operations",
-        "sueldoPromedio": 75000
+        "sueldoPromedio": 75000.00
     },
 
     {
         "id": 3,
         "nombre": "Contador",
         "categoria": "Finance",
-        "sueldoPromedio": 65000
+        "sueldoPromedio": 65000.00
     },
 
     {
         "id": 4,
         "nombre": "Ingeniero Civil",
         "categoria": "Engineering",
-        "sueldoPromedio": 125000
+        "sueldoPromedio": 125000.00
     },
 
     {
         "id": 5,
         "nombre": "Recepcionista",
         "categoria": "Operations",
-        "sueldoPromedio": 25000
+        "sueldoPromedio": 25000.00
     },
 
     {
         "id": 6,
         "nombre": "Gerente de Cuentas",
         "categoria": "Marketing",
-        "sueldoPromedio": 85000
+        "sueldoPromedio": 85000.00
     }
 ]

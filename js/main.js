@@ -128,25 +128,31 @@ document.addEventListener ('DOMContentLoaded', () => {
 
 const lista = document.querySelector('#listado');
 
-fetch('./sueldos.json')
-.then((response) => response.json())
-.then((data) => {
-    mostrarSueldos(data)
-})
+
+document.addEventListener ('DOMContentLoaded', () =>  {
+    fetch('./sueldos.json')
+    .then((response) => response.json())
+    .then((data) => {
+        mostrarSueldos(data)
+    })
+
+});
+
+
 
 const mostrarSueldos = (data) => {
     data.forEach((job) => {
         const li = document.createElement('li');
         li.innerHTML = `
-        <h4>${job.nombre}</h4>
-        <p>${job.categoria}</p>
-        <p>${job.sueldoPromedio}</p>
+        <h4 class="expect">${job.nombre}</h4>
+        <p class="expectDetail">${job.categoria}</p>
+        <p class="expectDetail">ARS ${job.sueldoPromedio}</p>
         `
         lista.appendChild(li);
     })
 };
 
-console.log(mostrarSueldos);
+//console.log(mostrarSueldos);
 
 
 /* function diferenciaFechas (fecha1, fecha2) {
