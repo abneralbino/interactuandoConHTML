@@ -138,8 +138,9 @@ const mostrarSueldos = (data) => {
     data.forEach((job) => {
         const li = document.createElement('li');
         li.innerHTML = `
-        <h4>${job.title}</h4>
-        <p>${job.body}</p>
+        <h4>${job.nombre}</h4>
+        <p>${job.categoria}</p>
+        <p>${job.sueldoPromedio}</p>
         `
         lista.appendChild(li);
     })
