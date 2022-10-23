@@ -1,9 +1,12 @@
 const reqForm = document.getElementById('nuevoPuesto');
-//const cantidadDeDias = 0;
-//const diferenciaFechas = 0;
 const msAdias = 0;
 const fechaDeHoy = new Date();
 const fechaDeHoyReal = fechaDeHoy.toLocaleString(fechaDeHoy.DATE_SHORT);
+
+function idGenerator () {
+    let generateNumber = parseInt((Date.now())/4);
+    return generateNumber;
+}
 
 function calcularFechas (fecha1, fecha2) {
     let diferenciaFechas = fecha1 - fecha2;
@@ -19,12 +22,12 @@ reqForm.addEventListener('submit', (e) => {
 
     const form = new FormData(reqForm);
     const tituloDeLaPosicion = form.get('tituloDeLaPosicion');
-    const idDeLaPosicion = form.get('numeroId');
+    const idDeLaPosicion = idGenerator();
     const fechaLimite = new Date(form.get('fechaLimite'));
     const fechaLimiteReal = fechaLimite.toLocaleString(fechaLimite.DATE_SHORT);
     const vacantes = form.get('vacantes');
     const cantDias = (calcularFechas (fechaLimite, fechaDeHoy));
-    
+
 
     const req = {
         titulo: tituloDeLaPosicion,
@@ -37,9 +40,6 @@ reqForm.addEventListener('submit', (e) => {
 
     crearReq(req);
 });
-
-console.log(fechaDeHoy);
-
 
 const crearReq = (req) => {
     const reqsAbiertas = document.getElementById('posicionesAbiertas');
@@ -55,7 +55,7 @@ const crearReq = (req) => {
         <td> ${req.rowCantDias} </td>
         <td> ${req.vacantesReq} </td>
         <button class="visualizar"> Ver detalles </button> 
-        <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
+        <button class="remover" id="${req.id}" name="remover" value="${req.id}"> Remover </button>
         
     </tr>    
     `;
@@ -68,9 +68,9 @@ reqsAbiertas.addEventListener('click', (e) => {
     });
 };
 
-const removerReq = (titulo) => {
+const removerReq = (idPosicion) => {
     posiciones.forEach((req, index) => {
-        if (req.tituloDeLaPosicion === titulo) {
+        if (req.id == idPosicion) {
             posiciones.splice(index, 1);
         }
         
@@ -96,7 +96,7 @@ const mostrarReqs = (posiciones) => {
                 <td> ${req.rowCantDias} </td>
                 <td> ${req.vacantesReq} </td>
                 <button class="visualizar"> Ver detalles </button>
-                <button class="remover" id="${req.titulo}" name="remover" value="${req.titulo}"> Remover </button>
+                <button class="remover" id="${req.id}" name="remover" value="${req.id}"> Remover </button>
                 
             </tr>    
             `;

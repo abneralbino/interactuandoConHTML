@@ -22,17 +22,17 @@
             <label for="Título" class="font">Título de la Posición</label>
             <input type="text" Required placeholder="Título" id="tituloDeLaPosicion" name="tituloDeLaPosicion">
         </div>
-        <div>
+        <!-- <div>
             <label for="ID" class="font">ID de la Posición</label>
-            <input type="number" Required placeholder="ID" id="numeroId" name="numeroId">
-        </div>
+            <input type="number" Required placeholder="ID" id="numeroId" name="numeroId" min="0">
+        </div> -->
         <div>
             <label for="Límite" class="font">Fecha Límite de Contratación</label>
             <input type="date" Required placeholder="Fecha límite para que el candidato firme su contrato" id="fechaLimite" name="fechaLimite">
         </div>
         <div>
             <label for="Vacantes" class="font">Cantidad de vacantes</label>
-            <input type="number" Required placeholder="Cuántas personas quiere contratar" id="vacantes" name="vacantes">
+            <input type="number" Required placeholder="Cuántas personas quiere contratar" id="vacantes" name="vacantes" min="1">
         </div>
         <div class="formFields">
             <input type="submit" value="Enviar" id="enviar">
