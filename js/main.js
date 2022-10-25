@@ -27,6 +27,7 @@ reqForm.addEventListener('submit', (e) => {
     const fechaLimiteReal = fechaLimite.toLocaleString(fechaLimite.DATE_SHORT);
     const vacantes = form.get('vacantes');
     const cantDias = (calcularFechas (fechaLimite, fechaDeHoy));
+    const categorias = form.get('categoria');
 
 
     const req = {
@@ -35,6 +36,7 @@ reqForm.addEventListener('submit', (e) => {
         fecha: fechaLimiteReal,
         rowCantDias: cantDias,
         vacantesReq: vacantes,
+        categoria: categorias,
 
     };
 
@@ -46,17 +48,16 @@ const crearReq = (req) => {
     const tr = document.createElement('tr');
     posiciones.push(req);
 
-    tr.innerHTML += `
-   
+    tr.innerHTML = `
     <tr>
-        <td> ${req.titulo} </td>
-        <td> ${req.id} </td>
-        <td> ${req.fecha} </td>
-        <td> ${req.rowCantDias} </td>
-        <td> ${req.vacantesReq} </td>
-        <button class="visualizar"> Ver detalles </button> 
-        <button class="remover" id="${req.id}" name="remover" value="${req.id}"> Remover </button>
-        
+    <td> ${req.titulo} </td>
+    <td> ${req.id} </td>
+    <td> ${req.fecha} </td>
+    <td> ${req.rowCantDias} </td>
+    <td> ${req.vacantesReq} </td>
+    <td> ${req.categoria} </td>
+    <button class="visualizar"> Ver detalles </button> 
+    <button class="remover" id="${req.id}" name="remover" value="${req.id}"> Remover </button>
     </tr>    
     `;
     reqsAbiertas.appendChild(tr);
@@ -82,24 +83,20 @@ const removerReq = (idPosicion) => {
 
 const mostrarReqs = (posiciones) => {
     const reqsAbiertas = document.getElementById('posicionesAbiertas');
-    const tr = document.createElement('tr');
-    
-    reqsAbiertas.innerHTML = ''; //no usé .innerHTML porque está borrando el header de la tabla
-
+    reqsAbiertas.innerHTML = ''; 
     posiciones.forEach(req => {
-        tr.innerHTML += `
-            <tr></tr>
-            <tr>
-                <td> ${req.titulo} </td>
-                <td> ${req.id} </td>
-                <td> ${req.fecha} </td>
-                <td> ${req.rowCantDias} </td>
-                <td> ${req.vacantesReq} </td>
-                <button class="visualizar"> Ver detalles </button>
-                <button class="remover" id="${req.id}" name="remover" value="${req.id}"> Remover </button>
-                
-            </tr>    
-            `;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `   
+        <tr>
+            <td> ${req.titulo} </td>
+            <td> ${req.id} </td>
+            <td> ${req.fecha} </td>
+            <td> ${req.rowCantDias} </td>
+            <td> ${req.vacantesReq} </td>
+            <td> ${req.categoria} </td>
+            <button class="visualizar"> Ver detalles </button>
+            <button class="remover" id="${req.id}" name="remover" value="${req.id}"> Remover </button>
+        </tr>`; 
             reqsAbiertas.appendChild(tr);
     });  
 
@@ -140,6 +137,7 @@ document.addEventListener ('DOMContentLoaded', () =>  {
 
 
 
+
 const mostrarSueldos = (data) => {
     data.forEach((job) => {
         const li = document.createElement('li');
@@ -150,7 +148,31 @@ const mostrarSueldos = (data) => {
         `
         lista.appendChild(li);
     })
-};
+}; 
+
+
+
+/* const detallesReq = (detalleDeLaPosicion) => {
+    posiciones.forEach((req, index) => {
+        if (req.categoria === detalleDeLaPosicion) {
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+            <h4 class="expect">${job.nombre}</h4>
+            <p class="expectDetail">${job.categoria}</p>
+            <p class="expectDetail">ARS ${job.sueldoPromedio}</p>
+            `
+            lista.appendChild(li);
+        
+    };
+    mostrarReqs (posiciones);
+    guardarReqStorage (posiciones);
+    
+    });
+}; */
+
+
+
 
 //console.log(mostrarSueldos);
 

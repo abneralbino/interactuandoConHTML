@@ -22,10 +22,16 @@
             <label for="Título" class="font">Título de la Posición</label>
             <input type="text" Required placeholder="Título" id="tituloDeLaPosicion" name="tituloDeLaPosicion">
         </div>
-        <!-- <div>
-            <label for="ID" class="font">ID de la Posición</label>
-            <input type="number" Required placeholder="ID" id="numeroId" name="numeroId" min="0">
-        </div> -->
+        <div>
+            <label for="categoria" class="font" id="categoria">Categoría</label>
+            <select id="categoria" name="categoria">
+                <option value="Creative & Design">Creative & Design</option>
+                <option value="Operations">Operations</option>
+                <option value="Finance">Finance</option>
+                <option value="Engineering">Engineering</option>
+                <option value="Marketing">Marketing</option>
+            </select>
+        </div>
         <div>
             <label for="Límite" class="font">Fecha Límite de Contratación</label>
             <input type="date" Required placeholder="Fecha límite para que el candidato firme su contrato" id="fechaLimite" name="fechaLimite">
@@ -39,15 +45,15 @@
             <input type="reset" value="Limpiar formulario">
         </div>
     </form>
-    <h3 class="fontH3">Posiciones Activas</h3>
-    
+    <h3 class="fontH3">Posiciones Activas</h3> 
     <table id="posicionesAbiertas" class="font">
         <tr>
-          <th>Titulo</th>
-          <th>ID</th>
-          <th>Fecha Límite de Contratación</th>
-          <th>Días para Presentar Candidatos</th>
-          <th>Cantidad de Candidatos a Presentar</th>
+        <th>Titulo</th>
+        <th>ID</th>
+        <th>Fecha Límite de Contratación</th>
+        <th>Días para Presentar Candidatos</th>
+        <th>Cantidad de Candidatos a Presentar</th>
+        <th>Categoría</th>
         </tr>
     </table>
 
