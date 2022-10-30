@@ -123,30 +123,35 @@ document.addEventListener ('DOMContentLoaded', () => {
     }
 });
 
-const lista = document.querySelector('#listado');
+const listaDeSueldos = document.querySelector('#listado');
 
 
 document.addEventListener ('DOMContentLoaded', () =>  {
     fetch('./sueldos.json')
     .then((response) => response.json())
-    .then((data) => {
-        mostrarSueldos(data)
+    .then((sueldos) => {
+        mostrarSueldos(sueldos)
     })
 
 });
 
 
 
-
-const mostrarSueldos = (data) => {
-    data.forEach((job) => {
+const mostrarSueldos = (sueldos) => {
+    sueldos.forEach((job) => {
         const li = document.createElement('li');
         li.innerHTML = `
+        <div class ="card">
+        <img src='${job.img}' class ="images"></img>
+        <div class="details">
         <h4 class="expect">${job.nombre}</h4>
         <p class="expectDetail">${job.categoria}</p>
         <p class="expectDetail">ARS ${job.sueldoPromedio}</p>
+        </div>
+        </div>
+        
         `
-        lista.appendChild(li);
+        listaDeSueldos.appendChild(li);
     })
 }; 
 
